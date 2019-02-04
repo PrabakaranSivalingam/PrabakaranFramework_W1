@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="48703" started-at="2019-01-25T06:54:39Z" finished-at="2019-01-25T06:55:28Z">
+  <suite name="Default suite" duration-ms="240452" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:43:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="48703" started-at="2019-01-25T06:54:39Z" finished-at="2019-01-25T06:55:28Z">
-      <class name="com.training.functional.tests.NewTagTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.NewTagTest@6f7fd0e6]" name="setUpBeforeClass" is-config="true" duration-ms="19614" started-at="2019-01-25T06:54:39Z" finished-at="2019-01-25T06:54:59Z">
+    <test name="Default test" duration-ms="240452" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:43:13Z">
+      <class name="com.training.functional.tests.BlogTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="setUpBeforeClass" is-config="true" duration-ms="22657" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:39:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:com.training.functional.tests.NewTagTest@6f7fd0e6]" name="validLoginTest" duration-ms="7557" started-at="2019-01-25T06:54:59Z" finished-at="2019-01-25T06:55:07Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="validLoginTest" duration-ms="4883" started-at="2019-02-04T09:39:36Z" finished-at="2019-02-04T09:39:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="AddNewtest()[pri:1, instance:com.training.functional.tests.NewTagTest@6f7fd0e6]" name="AddNewtest" duration-ms="19518" started-at="2019-01-25T06:55:07Z" finished-at="2019-01-25T06:55:26Z">
+        <test-method status="PASS" signature="userBlogSection()[pri:1, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="userBlogSection" duration-ms="13866" started-at="2019-02-04T09:39:41Z" finished-at="2019-02-04T09:39:54Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddNewtest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.functional.tests.NewTagTest@6f7fd0e6]" name="tearDown" is-config="true" duration-ms="1954" started-at="2019-01-25T06:55:26Z" finished-at="2019-01-25T06:55:28Z">
+        </test-method> <!-- userBlogSection -->
+        <test-method status="PASS" signature="validAdminLoginTest()[pri:2, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="validAdminLoginTest" duration-ms="158010" started-at="2019-02-04T09:39:54Z" finished-at="2019-02-04T09:42:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validAdminLoginTest -->
+        <test-method status="PASS" signature="adminCommentReply()[pri:3, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="adminCommentReply" duration-ms="37014" started-at="2019-02-04T09:42:33Z" finished-at="2019-02-04T09:43:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminCommentReply -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="tearDown" is-config="true" duration-ms="3980" started-at="2019-02-04T09:43:10Z" finished-at="2019-02-04T09:43:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.functional.tests.NewTagTest -->
+      </class> <!-- com.training.functional.tests.BlogTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

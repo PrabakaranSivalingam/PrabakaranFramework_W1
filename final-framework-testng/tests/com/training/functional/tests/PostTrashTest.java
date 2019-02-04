@@ -11,19 +11,18 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import com.training.generics.ScreenShot;
 import com.training.pom.AllPostLinkPOM;
+import com.training.pom.DashboardPOM;
 import com.training.pom.LoginPOM;
-import com.training.pom.PostLinkPOM;
-
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class PostTrashTest {
+public class PostTrashTest {        //Test case of W1-One-RETC_016
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private PostLinkPOM postLinkPOM;
+	private DashboardPOM dashboardPOM;
 	private AllPostLinkPOM allPostLinkPOM;
 
 	@BeforeClass
@@ -59,17 +58,17 @@ public class PostTrashTest {
 	
 	@Test(priority=1)
 	public void PostTrashtest() {
-		postLinkPOM = new PostLinkPOM(driver);
+		dashboardPOM = new DashboardPOM(driver);
 		screenShot.captureScreenShot("PostLink");
-		postLinkPOM.selectPostLink();
+		dashboardPOM.selectPostLink();
 		
 			
-		String[] actualLinks = postLinkPOM.postLinksValidation();
+		String[] actualLinks = dashboardPOM.postLinksValidation();
 		screenShot.captureScreenShot("PostLink");
 		String[] expectedLinks = {"All Posts","Add New","Categories","Tags"};
 		Assert.assertEquals(actualLinks, expectedLinks);
 		
-		postLinkPOM.selectAllPostLink();
+		dashboardPOM.selectAllPostLink();
 		
 		screenShot.captureScreenShot("AllPostScreen");
 		

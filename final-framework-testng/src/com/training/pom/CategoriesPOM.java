@@ -39,10 +39,13 @@ public class CategoriesPOM {
 	@FindBy(xpath="//p[contains(text(),'Categories deleted.')]")  ////div[@id='message']  //p[contains(text(),'Categories deleted.')] 
 	private WebElement deleteMessage;
 	
-	private String rowElement = "//table/tbody[@id='the-list']/tr";
+	//private List<WebElement> rows = driver.findElements(By.xpath("//table/tbody[@id='the-list']/tr"));
 	
 	private String beforeXpath = "//table/tbody[@id='the-list']/tr[";
 	private String afterXpath = "]/td[1]";
+	
+	@FindBy(xpath="//table/tbody[@id='the-list']/tr")   
+	private List<WebElement> row;
 	
 	public String categoriesTitleCheck() {
 		String catTitle = categoriesTitle.getText();    // Categories
@@ -80,7 +83,6 @@ public class CategoriesPOM {
 		
 		boolean namePresent=false;
 		
-		List<WebElement> row = driver.findElements(By.xpath(rowElement));
 		int rowCount = row.size();		
 		
 		for (int i = 1; i <= rowCount; i++) {

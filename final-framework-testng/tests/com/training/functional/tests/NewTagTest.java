@@ -16,19 +16,19 @@ import com.training.generics.ScreenShot;
 import com.training.pom.AddNewPOM;
 import com.training.pom.AllPostLinkPOM;
 import com.training.pom.CategoriesPOM;
+import com.training.pom.DashboardPOM;
 import com.training.pom.LoginPOM;
-import com.training.pom.PostLinkPOM;
 import com.training.pom.TagsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 public class NewTagTest {
-	private WebDriver driver;
+	private WebDriver driver;				//Test case of W1-Five-RETC_020
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private PostLinkPOM postLinkPOM;
+	private DashboardPOM dashboardPOM;
 	private AllPostLinkPOM allPostLinkPOM;
 	private AddNewPOM addNewPOM;
 	private CategoriesPOM categoriesPOM;
@@ -64,16 +64,16 @@ public class NewTagTest {
 	
 	@Test(priority=1)
 	public void AddNewtest() throws InterruptedException {
-		postLinkPOM = new PostLinkPOM(driver);
+		dashboardPOM = new DashboardPOM(driver);
 		screenShot.captureScreenShot("PostLink");
-		postLinkPOM.selectPostLink();
+		dashboardPOM.selectPostLink();
 		
 			
-		String[] actualLinks = postLinkPOM.postLinksValidation();
+		String[] actualLinks = dashboardPOM.postLinksValidation();
 		screenShot.captureScreenShot("PostLink");
 		String[] expectedLinks = {"All Posts","Add New","Categories","Tags"};
 		Assert.assertEquals(actualLinks, expectedLinks);
-		postLinkPOM.selectTagsLink();
+		dashboardPOM.selectTagsLink();
 		
 		tagsPOM = new TagsPOM(driver);
 		

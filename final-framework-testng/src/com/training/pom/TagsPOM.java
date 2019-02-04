@@ -27,10 +27,13 @@ public class TagsPOM {
 	@FindBy(xpath = "//input[@id='submit']")
 	private WebElement addNewTagButton;
 
+	@FindBy(xpath = "//table/tbody[@id='the-list']/tr")
+	private List<WebElement> row;
+
 	@FindBy(xpath = "//h1[@class='wp-heading-inline']")
 	private WebElement tagsTitle;
 
-	private String tagRowElement = "//table/tbody[@id='the-list']/tr";
+	// private String tagRowElement = "//table/tbody[@id='the-list']/tr";
 
 	private String tagBeforeXpath = "//table/tbody[@id='the-list']/tr[";
 	private String tagAfterXpath = "]/td[1]";
@@ -56,10 +59,7 @@ public class TagsPOM {
 
 		boolean namePresent = false;
 
-		List<WebElement> row = driver.findElements(By.xpath(tagRowElement));
-		int rowCount = row.size();
-		
-		for (int i = 1; i <= rowCount; i++) {
+		for (int i = 1; i <= row.size(); i++) {
 			String actualXpath = tagBeforeXpath + i + tagAfterXpath;
 			WebElement element = driver.findElement(By.xpath(actualXpath));
 

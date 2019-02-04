@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PostLinkPOM {
-	private WebDriver driver; 
+public class DashboardPOM {    //PostLink
+		private WebDriver driver; 
 	
 		@FindBy(xpath="//div[contains(text(),'Posts')]")
 		private WebElement selectPost;
@@ -18,8 +18,16 @@ public class PostLinkPOM {
 		private WebElement selectCatagories;
 		@FindBy(xpath="//a[@href='edit-tags.php?taxonomy=post_tag']")
 		private WebElement selectTags;
+		@FindBy(xpath="//li[@id='menu-posts-property']")
+	    private WebElement propertiesLink;
+//		@FindBy(xpath="//li[@id='menu-comments']")    //div[contains(text(),'Comments')] 
+//	    private WebElement selectComments;
 		
-		public PostLinkPOM(WebDriver driver) {
+		@FindBy(css="li#menu-comments")
+		private WebElement selectComments;
+		
+		
+		public DashboardPOM(WebDriver driver) {
 			this.driver = driver; 
 			PageFactory.initElements(driver, this);
 		}
@@ -54,6 +62,16 @@ public class PostLinkPOM {
 			actual[2]= selectCatagories.getText();
 			actual[3]= selectTags.getText();
 			return actual;
+		}
+		
+		public void PropertyLinkSelection() {
+			
+			propertiesLink.click();
+		}
+		
+		public void CommentsLinkSelection() {
+					
+			selectComments.click();
 		}
 		
 		

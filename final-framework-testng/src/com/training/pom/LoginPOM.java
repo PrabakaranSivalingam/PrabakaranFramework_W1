@@ -13,6 +13,9 @@ public class LoginPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(xpath ="//a[@class='sign-in']")
+	private WebElement signInLink;
+	
 	@FindBy(id="user_login")
 	private WebElement userName; 
 	
@@ -34,5 +37,9 @@ public class LoginPOM {
 	
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
+	}
+	
+	public void clickSignINLink() {
+		this.signInLink.click();
 	}
 }
