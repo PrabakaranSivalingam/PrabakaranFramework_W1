@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="240452" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:43:13Z">
+  <suite name="Default suite" duration-ms="202039" started-at="2019-02-14T16:15:37Z" finished-at="2019-02-14T16:18:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="240452" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:43:13Z">
-      <class name="com.training.functional.tests.BlogTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="setUpBeforeClass" is-config="true" duration-ms="22657" started-at="2019-02-04T09:39:13Z" finished-at="2019-02-04T09:39:36Z">
+    <test name="Default test" duration-ms="202039" started-at="2019-02-14T16:15:37Z" finished-at="2019-02-14T16:18:59Z">
+      <class name="com.training.functional.tests.RETC080AddNewProperty">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.RETC080AddNewProperty@6f7fd0e6]" name="setUpBeforeClass" is-config="true" duration-ms="45456" started-at="2019-02-14T16:15:37Z" finished-at="2019-02-14T16:16:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="validLoginTest" duration-ms="4883" started-at="2019-02-04T09:39:36Z" finished-at="2019-02-04T09:39:41Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:com.training.functional.tests.RETC080AddNewProperty@6f7fd0e6]" name="validLoginTest" duration-ms="14837" started-at="2019-02-14T16:16:23Z" finished-at="2019-02-14T16:16:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="userBlogSection()[pri:1, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="userBlogSection" duration-ms="13866" started-at="2019-02-04T09:39:41Z" finished-at="2019-02-04T09:39:54Z">
+        <test-method status="PASS" signature="CreateNewPropertyWithCompleteDetails()[pri:1, instance:com.training.functional.tests.RETC080AddNewProperty@6f7fd0e6]" name="CreateNewPropertyWithCompleteDetails" duration-ms="140747" started-at="2019-02-14T16:16:38Z" finished-at="2019-02-14T16:18:58Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- userBlogSection -->
-        <test-method status="PASS" signature="validAdminLoginTest()[pri:2, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="validAdminLoginTest" duration-ms="158010" started-at="2019-02-04T09:39:54Z" finished-at="2019-02-04T09:42:32Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validAdminLoginTest -->
-        <test-method status="PASS" signature="adminCommentReply()[pri:3, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="adminCommentReply" duration-ms="37014" started-at="2019-02-04T09:42:33Z" finished-at="2019-02-04T09:43:10Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- adminCommentReply -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.functional.tests.BlogTest@6f7fd0e6]" name="tearDown" is-config="true" duration-ms="3980" started-at="2019-02-04T09:43:10Z" finished-at="2019-02-04T09:43:13Z">
+        </test-method> <!-- CreateNewPropertyWithCompleteDetails -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.functional.tests.RETC080AddNewProperty@6f7fd0e6]" name="tearDown" is-config="true" duration-ms="976" started-at="2019-02-14T16:18:58Z" finished-at="2019-02-14T16:18:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.functional.tests.BlogTest -->
+      </class> <!-- com.training.functional.tests.RETC080AddNewProperty -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

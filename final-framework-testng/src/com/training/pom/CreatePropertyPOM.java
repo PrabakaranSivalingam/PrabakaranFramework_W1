@@ -9,7 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/* CreatePropertyPOM class define the webelements and the corresponding method from the property page of the 
+ * real estate application */
 
 public class CreatePropertyPOM {
 
@@ -20,6 +26,8 @@ public class CreatePropertyPOM {
 		PageFactory.initElements(driver, this);
 	}
 
+	//Web Elements in Property page
+	
 //	@FindBy(xpath="//li[@id='menu-posts-property']")
 //    private WebElement propertiesLink;
 	@FindBy(xpath = "//a[@class='page-title-action']") // (//a[contains(text(),'Add New')])[1]
@@ -28,9 +36,9 @@ public class CreatePropertyPOM {
 	private WebElement enterTitleBox;
 	@FindBy(xpath = "//textarea[@id='content']")
 	private WebElement enterTextBox;
-	@FindBy(xpath = "//input[@id='in-property_feature-132']")
+	@FindBy(xpath = "(//ul[@id='property_featurechecklist']//input)[1]") // //ul[@id='property_featurechecklist']//input //input[@id='in-property_feature-132']
 	private WebElement allFeatureCheckBox;
-	@FindBy(xpath = "//input[@id='in-region-24']")
+	@FindBy(xpath = "(//ul[@id='regionchecklist']//input)[1]")   // //ul[@id='regionchecklist']//input  //input[@id='in-region-24']
 	private WebElement allRegionCheckBox;
 	@FindBy(xpath = "//input[@id='publish']")
 	private WebElement publishButton;
@@ -75,6 +83,145 @@ public class CreatePropertyPOM {
 
 	//private String allRegionElements = "(//ul[@id='regionchecklist']//ul[@class='children'])[1]";
 	
+	@FindBy(xpath="//a[contains(text(),'Features')]")
+	private WebElement featuresLink;
+	
+	@FindBy(css = "textarea#_price")
+	private WebElement priceTextBox;
+	
+	@FindBy(css = "input#_price_per")
+	private WebElement pricePerSqTextBox;
+	
+	@FindBy(css = "a#ui-id-2")
+	private WebElement mainDetailsTab;
+	
+	@FindBy(css = "a#ui-id-3")
+	private WebElement locationTab;
+	
+	@FindBy(css = "input#_status")
+	private WebElement mainDetailsStatus;
+	
+	@FindBy(css = "input#_location")
+	private WebElement mainDetailsLocation;
+	
+	@FindBy(css = "input#_possession")
+	private WebElement mainDetailsPossession;
+	
+	@FindBy(css = "input#_friendly_address")
+	private WebElement locationAddress;
+	
+	@FindBy(css = "input#_address")
+	private WebElement locationGoogleMapAddress;
+	
+	@FindBy(css = "input#_geolocation_lat")
+	private WebElement locationLatitude;
+	
+	@FindBy(css = "input#_geolocation_long")
+	private WebElement locationLongitude;
+	
+	@FindBy(css = "input#_storage_room")
+	private WebElement detailsStorageRoom;
+	
+	@FindBy(xpath = "(//div[@class='categorychecklist-holder']//span[contains(text(),'Central Bangalore')]/preceding-sibling::input)[1]")
+	private WebElement keywordTag;
+	
+	@FindBy(css = "a#ui-id-4")
+	private WebElement detailsTab;
+	
+	//Methods for Web Elements in Property page
+	
+	public void selectKeywordTag() {
+		keywordTag.click();
+	}
+	
+	public void enterStoreageRoom(int room)
+	{
+		detailsStorageRoom.click();
+		detailsStorageRoom.sendKeys(String.valueOf(room));
+		
+	}
+	
+	public void enterLongitude(double longitude)
+	{
+		locationLongitude.click();
+		locationLongitude.sendKeys(String.valueOf(longitude));
+		
+	}
+	
+	public void enterLatitude(double latitude)
+	{
+		locationLatitude.click();
+		locationLatitude.sendKeys(String.valueOf(latitude));
+		
+	}
+	
+	
+	public void enterGoogleMapAddress(String mapAddress) {
+		locationGoogleMapAddress.click();
+		locationGoogleMapAddress.sendKeys(mapAddress);
+		
+	}
+	
+	public void enterLocationAddress(String address) {
+		locationAddress.click();
+		locationAddress.sendKeys(address);
+		
+	}
+	
+	public void enterPossession(String possession) {
+		mainDetailsPossession.click();
+		mainDetailsPossession.sendKeys(possession);
+		
+	}
+	
+	public void enterLocation(String location) {
+		mainDetailsLocation.click();
+		mainDetailsLocation.sendKeys(location);
+		
+	}
+	
+	public void enterStatus(String status) {
+		mainDetailsStatus.click();
+		mainDetailsStatus.sendKeys(status);
+		
+	}
+	
+		
+	public void selectMainDetailsTab() {
+		mainDetailsTab.click();
+	}
+	
+	public void selectLocationTab() {
+		locationTab.click();
+	}
+	public void selectDetailsTab() {
+		detailsTab.click();
+	}
+	
+	
+	
+	public void enterPricePerSq(double pricePer)
+	{
+		pricePerSqTextBox.click();
+		pricePerSqTextBox.clear();
+		pricePerSqTextBox.sendKeys(String.valueOf(pricePer));
+		
+	}
+	
+	public void enterPrice(double price)
+	{
+		priceTextBox.click();
+		priceTextBox.clear();
+		priceTextBox.sendKeys(String.valueOf(price));
+		
+	}
+	
+	
+	
+	public void selectFeaturesLink() {
+		
+		featuresLink.click();
+	}
 	
 
 	public String trashPageCheck() {
@@ -132,7 +279,7 @@ public class CreatePropertyPOM {
 		addNewRegionButton.click();
 	}
 
-	public void SelectRegionFromAllRegions(String inputRegion) throws InterruptedException {
+	public void SelectRegionFromAllRegions(String inputRegion) {
 
 		
 		
@@ -149,7 +296,7 @@ public class CreatePropertyPOM {
 			}
 			i++;
 		}
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 
 	}
 
@@ -189,18 +336,26 @@ public class CreatePropertyPOM {
 	}
 
 	public void AllFeatureCheckBoxSelection() {
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -1500)", "");
 		allFeatureCheckBox.click();
 	}
 
 	public void AllRegionCheckBoxSelection() {
 		allRegionCheckBox.click();
-		;
+		
 	}
 
-	public void PublishButtonSelection() throws InterruptedException {
+	public void PublishButtonSelection() {
+		
+		
 
-		driver.switchTo().defaultContent();
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -250)", "");
+		//driver.switchTo().defaultContent();
+	//	((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -250)", "");
+		
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("span#edit-slug-buttons"))));
+								
+		//div#edit-slug-box
 //		Robot robot = new Robot();
 //		robot.keyPress(KeyEvent.VK_PAGE_UP);
 //		robot.keyRelease(KeyEvent.VK_PAGE_UP);
@@ -208,7 +363,8 @@ public class CreatePropertyPOM {
 //		Actions action = new Actions(driver);
 //		action.moveToElement(publishButton);
 
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+	
 		publishButton.click();
 	}
 

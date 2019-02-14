@@ -19,7 +19,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *      access.
  */
 public class ApachePOIExcelRead {
-	public  String [][] getExcelContent(String fileName) {
+	public  String [][] getExcelContent(String fileName,String sheetName) {
 		int rowCount =0; 
 		String [][] list1 = null; 
 		
@@ -31,14 +31,14 @@ public class ApachePOIExcelRead {
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
 			// Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
+			//XSSFSheet sheet = workbook.getSheetAt(0);
+			XSSFSheet sheet = workbook.getSheet(sheetName);
 			
 			int rowTotal = sheet.getLastRowNum();
-
-			if ((rowTotal > 0) || (sheet.getPhysicalNumberOfRows() > 0)) {
-			    rowTotal++;
-			}
 			
+			if ((rowTotal > 0) || (sheet.getPhysicalNumberOfRows() > 0)) {
+				rowTotal++;
+			}
 			
 			// Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -71,6 +71,10 @@ public class ApachePOIExcelRead {
 							tempList1[cellCount] =cell.getStringCellValue();
 						}
 						break;
+						
+					case Cell.CELL_TYPE_BLANK:
+							tempList1[cellCount]=cell.getStringCellValue();
+							break;
 					}
 					cellCount ++; 
 				}
@@ -88,14 +92,14 @@ public class ApachePOIExcelRead {
 		return list1;
 	}
 
-	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
-		
-		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
-			for(String  tt : temp){
-				System.out.println(tt);
-			}
-		}
-
-	}
+//	public static void main(String[] args) {
+//		String fileName = "C:\\Users\\IBM_ADMIN\\Videos\\ReSkill-Selenium\\ProjectWork\\TestData.xlsx";
+//		
+//		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName,sheetName)){
+//			for(String  tt : temp){
+//				System.out.println(tt);
+//			}
+//		}
+//
+//	}
 }

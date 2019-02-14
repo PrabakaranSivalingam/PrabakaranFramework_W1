@@ -2,12 +2,23 @@ package com.training.pom;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPOM {    //PostLink
+/* DashboardPOM class define the webelements and the corresponding method from the Dashboard page of the 
+ * real estate application */
+
+public class DashboardPOM {    
 		private WebDriver driver; 
-	
+		
+		public DashboardPOM(WebDriver driver) {
+			this.driver = driver; 
+			PageFactory.initElements(driver, this);
+		}
+		
+		// Web elements for Dashboard page
+		
 		@FindBy(xpath="//div[contains(text(),'Posts')]")
 		private WebElement selectPost;
 		@FindBy(xpath="//a[@class='wp-first-item current']")
@@ -20,21 +31,34 @@ public class DashboardPOM {    //PostLink
 		private WebElement selectTags;
 		@FindBy(xpath="//li[@id='menu-posts-property']")
 	    private WebElement propertiesLink;
-//		@FindBy(xpath="//li[@id='menu-comments']")    //div[contains(text(),'Comments')] 
-//	    private WebElement selectComments;
 		
 		@FindBy(css="li#menu-comments")
 		private WebElement selectComments;
 		
+		// Navigate Dashboard >> Users link
+		@FindBy(css="li#menu-users")
+		private WebElement selectUsers;
 		
-		public DashboardPOM(WebDriver driver) {
-			this.driver = driver; 
-			PageFactory.initElements(driver, this);
-		}
+		@FindBy(xpath="//a[contains(text(),'Howdy')]")  //span.display-name
+		private WebElement selectadmin;
+		
+		@FindBy(xpath="//a[contains(@class,'ab-item')][contains(text(),'Log Out')]")
+		private WebElement logout;
+		
+			
+		
+		// Methods for Web elements in Dashboard page
 		
 		public void selectPostLink() {
 			this.selectPost.click();
 		
+		}
+		
+		public void selectLogout() {
+			
+			Actions action = new Actions(driver);
+			action.moveToElement(selectadmin).perform();
+			logout.click();
 		}
 		
 		public void selectAllPostLink() {
@@ -72,6 +96,11 @@ public class DashboardPOM {    //PostLink
 		public void CommentsLinkSelection() {
 					
 			selectComments.click();
+		}
+		
+		public void UsersLinkSelection() {
+			
+			selectUsers.click();
 		}
 		
 		

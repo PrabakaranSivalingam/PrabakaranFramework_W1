@@ -21,9 +21,16 @@ import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+/* 
+ * Author					:	Prabakaran Sivalingam
+ * Test Case ID				:	RETC_049
+ * Test Case Description	:	To verify whether application allows admin to reply for the comment added by use
+ * Pre Condition			:	1. user should have launched the application by entering valid URL
+ *								2. admin should have added New Launch Post
+ */
 public class BlogTest {
 
-	private WebDriver driver;			// Test case of W2-Four-RETC_049
+	private WebDriver driver;			
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
@@ -34,15 +41,13 @@ public class BlogTest {
 	private CommentsPOM commentsPOM;
 
 
+	// Create the file and driver object and Open the url in the browser
 	@BeforeClass
 	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-//	}
-//
-//	@BeforeMethod
-//	public void setUp() throws Exception {
+
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver);
 		baseUrl = properties.getProperty("baseUserURL"); // User
@@ -53,13 +58,14 @@ public class BlogTest {
 		
 	}
 
+	// Close the browser window
 	@AfterClass
 	public void tearDown() throws Exception {
-		Thread.sleep(3000);
 		driver.quit();
 		
 	}
 
+	//Test method to Login to the application using user role
 	@Test(priority = 0)
 	public void validLoginTest() {
 
@@ -70,8 +76,9 @@ public class BlogTest {
 		loginPOM.clickLoginBtn();
 	}
 
+	//Test method to add a comment for the post by the user
 	@Test(priority = 1)
-	public void userBlogSection() throws InterruptedException {
+	public void userBlogSection() {
 
 		blogPOM = new BlogPOM(driver);
 
@@ -84,7 +91,8 @@ public class BlogTest {
 		driver.close();
 
 	}
-
+    
+	//Test method to Login to the application using admin role
 	@Test(priority = 2)
 	public void validAdminLoginTest() {
 		
@@ -104,9 +112,10 @@ public class BlogTest {
 		loginPOM.clickLoginBtn();
 		
 	}
-
+	
+	//Test method for the admin to reply the comment for the post added by the user
 	@Test(priority = 3)
-	public void adminCommentReply() throws InterruptedException {
+	public void adminCommentReply() {
 
 		dashboardPOM = new DashboardPOM(driver);
 		dashboardPOM.CommentsLinkSelection();
@@ -114,9 +123,11 @@ public class BlogTest {
 		commentsPOM = new CommentsPOM(driver);
 		commentsPOM.findUserComment("NewOne");
 		int beforeCountValue = commentsPOM.beforeInResponseToCount("NewOne");
+		System.out.println(beforeCountValue);
 		int expected = beforeCountValue + 1;
 		commentsPOM.enterReplyComment();
 		int afterCountValue = commentsPOM.afterInResponseToCount("NewOne");
+		System.out.println(afterCountValue);
 
 		Assert.assertEquals(afterCountValue, expected);
 		

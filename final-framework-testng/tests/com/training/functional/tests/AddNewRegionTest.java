@@ -17,9 +17,17 @@ import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+/* 
+ * Author					:	Prabakaran Sivalingam
+ * Test Case ID				:	RETC_048
+ * Test Case Description	:	To verify whether application allows admin to add new Region while adding new property
+ * Pre Condition			:	1. user should have launched the application by entering valid URL
+ *								2. admin should be logged in
+ */
+
 public class AddNewRegionTest {
 
-	private WebDriver driver;				// Test case of W2-Three-RETC_048
+	private WebDriver driver;				
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
@@ -27,15 +35,15 @@ public class AddNewRegionTest {
 	private CreatePropertyPOM createPropertyPOM;
 	private DashboardPOM dashboardPOM;
 
+	
+	// Create the file and driver object and Open the url in the browser
+	
 	@BeforeClass
 	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-//	}
-//
-//	@BeforeMethod
-//	public void setUp() throws Exception {
+
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
@@ -43,12 +51,16 @@ public class AddNewRegionTest {
 		// open the browser
 		driver.get(baseUrl);
 	}
+	
+	// Close the browser window
 
 	@AfterClass
-	public void tearDown() throws Exception {
-		Thread.sleep(10000);
-		driver.quit();
+	public void tearDown()  {
+			driver.quit();
 	}
+	
+
+	//Test method to Login to the application using admin role
 
 	@Test(priority = 0)
 	public void validLoginTest() {
@@ -59,8 +71,11 @@ public class AddNewRegionTest {
 
 	}
 
+	
+	// Test method to create the new Property with the New region
+	
 	@Test(priority = 1)
-	public void CreateNewPropertyWithNewRegion() throws InterruptedException {
+	public void CreateNewPropertyWithNewRegion() {
 
 		createPropertyPOM = new CreatePropertyPOM(driver);
 		dashboardPOM = new DashboardPOM(driver);

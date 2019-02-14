@@ -17,9 +17,17 @@ import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+/* 
+ * Author					:	Prabakaran Sivalingam
+ * Test Case ID				:	RETC_050
+ * Test Case Description	:	To verify whether application allows admin to add property details into trash & display the same
+ * Pre Condition			:	1. user should have launched the application by entering valid URL
+ *								2. admin should be logged in
+ */
+
 public class PostMoveToTrashTest {
 
-	private WebDriver driver;			// Test case of W2-Five-RETC_050
+	private WebDriver driver;			
 	private String baseUrl;
 	private LoginPOM loginPOM;
 	private static Properties properties;
@@ -27,15 +35,13 @@ public class PostMoveToTrashTest {
 	private CreatePropertyPOM createPropertyPOM;
 	private DashboardPOM dashboardPOM;
 
+	// Create the file and driver object and Open the url in the browser
 	@BeforeClass
 	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-//	}
-//
-//	@BeforeMethod
-//	public void setUp() throws Exception {
+
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
@@ -44,12 +50,14 @@ public class PostMoveToTrashTest {
 		driver.get(baseUrl);
 	}
 
+	// Close the browser window
 	@AfterClass
-	public void tearDown() throws Exception {
-		Thread.sleep(10000);
+	public void tearDown() {
+		
 		driver.quit();
 	}
 
+	//Test method to Login to the application using admin role
 	@Test(priority = 0)
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
@@ -59,8 +67,9 @@ public class PostMoveToTrashTest {
 
 	}
 
+	//Test method to create a new property and move to the trash
 	@Test(priority = 1)
-	public void PostMoveToTrash() throws InterruptedException {
+	public void PostMoveToTrash() {
 
 		createPropertyPOM = new CreatePropertyPOM(driver);
 		dashboardPOM = new DashboardPOM(driver);

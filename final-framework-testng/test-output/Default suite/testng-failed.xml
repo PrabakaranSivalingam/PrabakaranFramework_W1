@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.functional.tests.BlogTest">
+      <class name="com.training.functional.tests.AddNewUserTestError">
         <methods>
-          <include name="adminCommentReply"/>
           <include name="setUpBeforeClass"/>
+          <include name="AddUsertest" invocation-numbers="0 1 2"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.functional.tests.BlogTest -->
+      </class> <!-- com.training.functional.tests.AddNewUserTestError -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

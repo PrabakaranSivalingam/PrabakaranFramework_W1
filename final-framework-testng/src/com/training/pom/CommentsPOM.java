@@ -10,6 +10,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/* CommentsPOM class define the webelements and the corresponding method from the Comments
+ *  page of the real estate application */
+
 public class CommentsPOM {
 
 	private WebDriver driver;
@@ -19,6 +22,8 @@ public class CommentsPOM {
 		PageFactory.initElements(driver, this);
 	}
 
+	//Web Elements in Comments page
+	
 	@FindBy(xpath = "//textarea[@id='replycontent']")
 	private WebElement replyCommentTextBox;
 
@@ -32,13 +37,19 @@ public class CommentsPOM {
 	private List<WebElement> element;
 	
 	@FindBy(css = "span.comment-count-approved")
-	private WebElement Counts;
+	private WebElement CountsApproved;
+	
+	@FindBy(css = "span[class*='comment-count-pending']") //comment-count-no-comments
+	private WebElement CountsBeforeApprove;
 	
 	public String beforeXpath = "//tr[";
 	public String afterXpath = "]//td[2]/p";
 	
-		
-	public void findUserComment(String userComment) throws InterruptedException {
+	
+
+	// Methods for the Web Elements in Comments page
+	
+	public void findUserComment(String userComment) {
 
 		for (int i = 1; i <= element.size(); i++) {
 
@@ -59,19 +70,19 @@ public class CommentsPOM {
 			}
 
 		}
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 	}
 
-	public void enterReplyComment() throws InterruptedException {
+	public void enterReplyComment() {
 		replyCommentTextBox.click();
 		replyCommentTextBox.sendKeys("Thanks");
 		approveAndReplyButton.click();
-		driver.navigate().refresh();
-		Thread.sleep(3000);
+		//driver.navigate().refresh();
+		//Thread.sleep(3000);
 
 	}
 
-	public int beforeInResponseToCount(String userComment) throws InterruptedException {
+	public int beforeInResponseToCount(String userComment) {
 
 		String beforeCountValue = null;
 
@@ -84,7 +95,7 @@ public class CommentsPOM {
 
 			if (id.equals(userComment)) {
 
-				WebElement beforeCount = Counts;
+				WebElement beforeCount = CountsBeforeApprove;
 				beforeCountValue = beforeCount.getText();
 				break;
 			}
@@ -95,7 +106,7 @@ public class CommentsPOM {
 		return beforeValue;
 	}
 
-	public int afterInResponseToCount(String userComment) throws InterruptedException {
+	public int afterInResponseToCount(String userComment) {
 
 		String afterCountValue = null;
 
@@ -107,7 +118,7 @@ public class CommentsPOM {
 
 			if (id.equals(userComment)) {
 
-				WebElement afterCount = Counts;
+				WebElement afterCount = CountsApproved;
 				afterCountValue = afterCount.getText();
 				break;
 			}

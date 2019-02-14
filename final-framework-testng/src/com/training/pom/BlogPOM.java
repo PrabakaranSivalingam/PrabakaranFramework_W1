@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+/* BlogPOM class define the webelements and the corresponding method from the Blog page of the real estate application */
 public class BlogPOM {
 	
 	private WebDriver driver;
@@ -16,7 +18,9 @@ public class BlogPOM {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-
+	
+	// Web Elements in Blog page
+	
 	@FindBy(xpath = "//ul[@id='responsive']//a[contains(text(),'Blog')]")
 	private WebElement blogMenuLink;
 	
@@ -32,17 +36,20 @@ public class BlogPOM {
 	@FindBy(xpath = "//div[@class='post-content']/h3")
 	private List<WebElement> element;
 	
+	
+	// Methods for the Web Elements in Blog page
+	
 	public void selectBlogMenuLink() {
 		
 		blogMenuLink.click();
 	}
 	
-	public void blogComment(String commentFromUser ) throws InterruptedException {
+	public void blogComment(String commentFromUser) {
 		
 		commentDetails.click();
 		commentDetails.sendKeys(commentFromUser);
 		
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		
 	}
 	
@@ -51,7 +58,7 @@ public class BlogPOM {
 		postCommentButton.click();
 	}
 	
-	public void userSelectPostReadMoreLink(String postName) throws InterruptedException {
+	public void userSelectPostReadMoreLink(String postName) {
 		
 		int i=0;
 		

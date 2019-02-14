@@ -9,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+/* CategoriesPOM class define the webelements and the corresponding method from the Category page of the 
+ * real estate application */
+
 public class CategoriesPOM {
 
 	private WebDriver driver;
@@ -17,6 +20,8 @@ public class CategoriesPOM {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
+	
+	//Web Elements in Category page
 	
 	@FindBy(xpath="//h1[@class='wp-heading-inline']")
 	private WebElement categoriesTitle;
@@ -46,6 +51,8 @@ public class CategoriesPOM {
 	
 	@FindBy(xpath="//table/tbody[@id='the-list']/tr")   
 	private List<WebElement> row;
+	
+	// Methods for the Web Elements in Category page
 	
 	public String categoriesTitleCheck() {
 		String catTitle = categoriesTitle.getText();    // Categories

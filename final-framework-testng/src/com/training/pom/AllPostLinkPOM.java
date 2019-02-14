@@ -6,6 +6,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+/* AllPostLinkPOM class define the webelements and the corresponding method from the AllPost page of 
+ * the real estate application */
+
 public class AllPostLinkPOM {
 	
 	private WebDriver driver;
@@ -15,6 +19,7 @@ public class AllPostLinkPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
+	// Web Elements in AllPost page
 	@FindBy(xpath="(//a[@class='row-title'][contains(text(),'New Launches')])[1]")
 	private WebElement Title;
 	@FindBy(xpath="(//a[@class='submitdelete'][contains(text(),'Trash')])[1]")
@@ -25,6 +30,7 @@ public class AllPostLinkPOM {
 	private WebElement UndoMessage;
 	
 	
+	// Methods for the Web Elements in AllPost page
 	public void postTrash() {
 		Actions action = new Actions(driver);
 		action.moveToElement(Title).perform();

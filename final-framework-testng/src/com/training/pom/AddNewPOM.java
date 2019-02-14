@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/* AddNewPOM class define the webelements and the corresponding method from the Post page of the real estate application */
+
+
 public class AddNewPOM {
 	
 		    private WebDriver driver;
@@ -14,6 +17,7 @@ public class AddNewPOM {
 				PageFactory.initElements(driver, this);
 			}
 			
+			// Web Elements for Post page
 			@FindBy(xpath="//input[@id='title']")
 			private WebElement enterTitleNew;
 			
@@ -29,6 +33,8 @@ public class AddNewPOM {
 			@FindBy(xpath="//div[@id='message']//p")   //a[contains(text(),'View post')]")
 			private WebElement viewPost;
 			
+			
+			// Methods for the Web Elements in Post page
 			public String addNewPostTitle() {
 				
 				String addnewPosttitle = addNewPostHeader.getText();

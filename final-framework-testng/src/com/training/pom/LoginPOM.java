@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/* LoginPOM class define the webelements and the corresponding method from the Login page of the 
+ * real estate application */
+
 public class LoginPOM {
 	private WebDriver driver; 
 	
@@ -13,6 +16,7 @@ public class LoginPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
+	// Web Elements for the login page
 	@FindBy(xpath ="//a[@class='sign-in']")
 	private WebElement signInLink;
 	
@@ -24,6 +28,8 @@ public class LoginPOM {
 	
 	@FindBy(name="login")
 	private WebElement loginBtn; 
+	
+	//Methods for the  Web Elements in the login page
 	
 	public void sendUserName(String userName) {
 		this.userName.clear();
